@@ -14,20 +14,25 @@ function text_truncate(str, length, ending) {
     }
 };
 
-function SearchResultsPodcast(props) {
+class SearchResultsPodcast extends Component {
+    constructor(props) {
+        super(props);
+        this.handleClick = this.props.handleClick.bind(this);
+    }
+    render(){
     return (
         <ul className="list-group search-results">
-            {props.results.map(result => (
-                <li key={result.id} className="list-group-item">
-                    <p>{text_truncate(result.title_original, 57)}</p>
-                    <div style={{ display: "flex" }}>
-                        <img src={result.thumbnail} alt={result.podcast_title_original} style={{ height: "100px" }} />
-                        <div>
-                            <p>by {text_truncate(result.publisher_original, 37)}</p>
+            {this.props.results.map((result, i) => (
+                <li key={result.id} className="list-group-item col-sm-12 col-md-8">
+                    <h4>{text_truncate(result.title_original, 57)}</h4>
+                    <p className="text-muted">by {text_truncate(result.publisher_original, 37)}</p>
+                    <div style={{ display: "flex" }} className="mb-2">
+                        <div className="col-sm-10 col-md-6 pl-0 pr-2">
+                            <img src={result.thumbnail} alt={result.podcast_title_original} />
                         </div>
-                        <div>
+                        <div className="col-md-4">
                             <button type="button" className="btn btn-info btn-block"><i className="fa fa-info-circle"></i> View</button>
-                            <button type="button" className="btn btn-info btn-block"><i className="fa fa-heart" aria-hidden="true"></i> Save</button>
+                            <button type="button" className="btn btn-info btn-block" onClick={() => this.handleClick(i)}><i className="fa fa-heart" aria-hidden="true"></i> Save</button>
                         </div>
                     </div>
                     <div>
@@ -37,6 +42,7 @@ function SearchResultsPodcast(props) {
             ))}
         </ul>
     );
+    }
 }
 
 function SearchResultsEpisode(props) {

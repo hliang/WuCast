@@ -44,19 +44,28 @@ class Search extends Component {
         });
       };
 
+    handleSavePodcastBtnClick = idx => {
+        alert("podcast saved " + idx);
+        API.savePodcast(this.state.searchResults[idx]);
+    }
+    handleSaveEpisodeBtnClick = idx => {
+        alert("episode saved " + idx);
+        // API.saveEpisode(this.state.searchResults[idx]);
+    }
+
     render() {
         // search results of podcast or episode
         let searchResults;
         if (this.state.searchType === "podcast") {
-            searchResults = <SearchResultsPodcast results={this.state.searchResults} />
+            searchResults = <SearchResultsPodcast results={this.state.searchResults} handleClick={this.handleSavePodcastBtnClick} />
         } else if (this.state.searchType === "episode")  {
-            searchResults = <SearchResultsEpisode results={this.state.searchResults} />
+            searchResults = <SearchResultsEpisode results={this.state.searchResults} handleClick={this.handleSaveEpisodeBtnClick} />
         }
 
         // render
         return (
-            <div className="container">
-                <h1 className="text-center">Discover interesting podcasts!</h1>
+            <div className="container col-sm-12 col-md-10 col-lg-8">
+                <h3 className="text-center">Discover interesting podcasts!</h3>
                 <SearchForm
                     searchTerm={this.state.searchTerm}
                     searchType={this.state.searchType}
