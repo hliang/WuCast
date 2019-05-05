@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Search from "./pages/Search";
-import Fav from "./pages/Fav";
+import Search from "./containers/Search";
+import Fav from "./containers/Fav";
 // import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
+import Footer from "./components/Footer";
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
             <Route exact path="/fav" component={Fav} />
             <Route exact path="/search" component={Search} />
           </Switch>
+          <Footer />
         </div>
       </Router>
     );
