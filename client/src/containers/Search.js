@@ -1,24 +1,45 @@
 import React, { Component } from "react";
 import SearchForm from "../components/SearchForm";
-import SearchResults from "../components/SearchResults";
+import {SearchResultsPodcast, SearchResultsEpisode, SearchResultsSum} from "../components/SearchResults";
+import API from "../utils/API";
 
 class Search extends Component {
     state = {
         searchTerm: "",
-        searchType: "episode",
+        searchType: "podcast",
+        sortByDate: false,
+        resultsOffset: 0,
         searchResults: [],
+        error: null,
     };
 
     handleFormSubmit = event => {
         event.preventDefault();
-        if (this.state.searchTerm && this.state.searchType) {
-            console.log("haha");
+        let queryParams = {
+            q: this.state.searchTerm,
+            type: this.state.searchType,
+            sort_by_date: this.state.sortByDate? 1 : 0,
+            offset: this.state.resultsOffset,
         }
+        if (this.state.searchTerm && this.state.searchType) {
+            console.log(queryParams);
+        
+        API.search(queryParams)
+        .then(res => {
+            if (res.data.status === "error") {
+                throw new Error(res.data.message);
+            }
+            console.log(res.data);
+            this.setState({ searchResults: res.data, error: null });
+        })
+        .catch(err => this.setState({ error: err.message }));
+        }
+
     };
 
-    // handleInputChange = event => {
-    //     this.setState({ searchTerm: event.target.value });
-    // };
+    handleInputChange = event => {
+        this.setState({ searchTerm: event.target.value });
+    };
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
@@ -27,6 +48,15 @@ class Search extends Component {
       };
 
     render() {
+        // search results of podcast or episode
+        let searchResults;
+        if (this.state.searchType === "podcast") {
+            searchResults = <SearchResultsPodcast results={this.state.searchResults} />
+        } else if (this.state.searchType === "episode")  {
+            searchResults = <SearchResultsEpisode results={this.state.searchResults} />
+        }
+
+        // render
         return (
             <div className="container">
                 <h1 className="text-center">Discover interesting podcasts!</h1>
@@ -37,12 +67,13 @@ class Search extends Component {
                     handleInputChange={this.handleInputChange}
                 />
 
-                <div className="container">
-                    Search for {this.state.searchType}s of <strong style={{color: "red"}}>{this.state.searchTerm}</strong>
-                </div>
-                <SearchResults 
-                    results={this.state.searchResults}
+                <SearchResultsSum
+                    searchTerm={this.state.searchTerm}
+                    searchType={this.state.searchType}
+                    searchResults={this.state.searchResults}
                 />
+
+                { searchResults }
 
             </div>
         );

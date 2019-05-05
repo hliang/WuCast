@@ -21,11 +21,11 @@ function SearchForm(props) {
                 </div>
                 <div className="input-group">
                     <div className="form-check form-check-inline">
-                        <input className="form-check-input" type="radio" name="searchType" id="searchByPodcast" value="podcast" onChange={props.handleInputChange} />
+                        <input className="form-check-input" type="radio" name="searchType" id="searchByPodcast" value="podcast" defaultChecked onChange={props.handleInputChange} />
                         <label className="form-check-label" htmlFor="searchByPodcast"> Podcast </label>
                     </div>
                     <div className="form-check form-check-inline">
-                        <input className="form-check-input" type="radio" name="searchType" id="searchByEpisode" value="episode" defaultChecked onChange={props.handleInputChange} />
+                        <input className="form-check-input" type="radio" name="searchType" id="searchByEpisode" value="episode" onChange={props.handleInputChange} />
                         <label className="form-check-label" htmlFor="searchByEpisode"> Episode </label>
                     </div>
                 </div>

@@ -1,6 +1,10 @@
 import axios from "axios";
 
 export default {
+  // search
+  search: function(queryParams) {
+    return axios.get("/api/search", {params: queryParams});
+  },
   // Gets all episodes
   getEpisodes: function() {
     return axios.get("/api/episodes");
