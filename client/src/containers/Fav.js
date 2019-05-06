@@ -60,7 +60,7 @@ class Fav extends Component {
                                     <img className="shadow-sm border border-light rounded" src={result.thumbnail} alt={result.podcast_title_original} />
                                 </div>
                                 <div className="col-md-4">
-                                    <button type="button" className="btn btn-info btn-block"><i className="fa fa-file-text-o"></i> View</button>
+                                    <a rols="button" href={result.listennotes_url} target="_blank" className="btn btn-info btn-block"><i className="fa fa-file-text-o"></i> View</a>
                                     <button type="button" className="btn btn-warning btn-block" onClick={()=>this.handleDeleteBtnClick(result.id)}><i className="fa fa-trash-o"></i> Delete</button>
                                 </div>
                             </div>

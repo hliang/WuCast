@@ -9,6 +9,7 @@ const episodeSchema = new Schema({
   pub_date_ms: { type: Date, default: Date.now, required: true },
   podcast_title: { type: String, required: true },
   podcast_id: { type: String, required: true },
+  listennotes_url: { type: String },
 });
 
 const Episode = mongoose.model("Episode", episodeSchema);

@@ -45,12 +45,12 @@ class Search extends Component {
       };
 
     handleSavePodcastBtnClick = idx => {
-        alert("podcast saved " + idx);
+        // alert("podcast saved " + idx);
         API.savePodcast(this.state.searchResults[idx]);
     }
     handleSaveEpisodeBtnClick = idx => {
-        alert("episode saved " + idx);
-        // API.saveEpisode(this.state.searchResults[idx]);
+        // alert("episode saved " + idx);
+        API.saveEpisode(this.state.searchResults[idx]);
     }
 
     render() {

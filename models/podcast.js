@@ -8,6 +8,7 @@ const podcastSchema = new Schema({
   description_original: { type: String, required: true },
   publisher_original: { type: String, required: true },
   latest_pub_date_ms: { type: Date, default: Date.now, required: true },
+  listennotes_url: { type: String },
 });
 
 const Podcast = mongoose.model("Podcast", podcastSchema);

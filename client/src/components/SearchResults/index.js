@@ -31,7 +31,7 @@ class SearchResultsPodcast extends Component {
                             <img className="shadow-sm border border-light rounded" src={result.thumbnail} alt={result.podcast_title_original} />
                         </div>
                         <div className="col-md-4">
-                            <button type="button" className="btn btn-info btn-block"><i className="fa fa-file-text-o"></i> View</button>
+                            <a rols="button" href={result.listennotes_url} target="_blank" className="btn btn-info btn-block"><i className="fa fa-file-text-o"></i> View</a>
                             <button type="button" className="btn btn-success btn-block" onClick={() => this.handleClick(i)}><i className="fa fa-heart" aria-hidden="true"></i> Save</button>
                         </div>
                     </div>
