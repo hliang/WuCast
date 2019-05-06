@@ -57,7 +57,7 @@ class Fav extends Component {
                             <p className="text-muted">by {text_truncate(result.publisher_original, 37)}</p>
                             <div style={{ display: "flex" }} className="mb-2">
                                 <div className="col-sm-10 col-md-6 pl-0 pr-2">
-                                    <img src={result.thumbnail} alt={result.podcast_title_original} />
+                                    <img className="shadow-sm border border-light rounded" src={result.thumbnail} alt={result.podcast_title_original} />
                                 </div>
                                 <div className="col-md-4">
                                     <button type="button" className="btn btn-info btn-block"><i className="fa fa-file-text-o"></i> View</button>
