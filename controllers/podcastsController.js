@@ -23,14 +23,13 @@ module.exports = {
   },
   update: function(req, res) {
     db.Podcast
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .findOneAndUpdate({ id: req.params.id }, req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
     db.Podcast
-      .findById({ _id: req.params.id })
-      .then(dbModel => dbModel.remove())
+      .findOneAndDelete({ id: req.params.id })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   }

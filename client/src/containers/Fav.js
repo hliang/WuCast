@@ -41,6 +41,11 @@ class Fav extends Component {
             .catch(err => console.log(err));
     };
 
+    handleDeleteBtnClick = id => {
+        alert("deleting " + id);
+        this.deletePodcast(id);
+    }
+
     render() {
         return (
             <div className="container col-sm-12 col-md-10 col-lg-8">
@@ -56,7 +61,7 @@ class Fav extends Component {
                                 </div>
                                 <div className="col-md-4">
                                     <button type="button" className="btn btn-info btn-block"><i className="fa fa-file-text-o"></i> View</button>
-                                    <button type="button" className="btn btn-warning btn-block"><i className="fa fa-trash-o"></i> Delete</button>
+                                    <button type="button" className="btn btn-warning btn-block" onClick={()=>this.handleDeleteBtnClick(result.id)}><i className="fa fa-trash-o"></i> Delete</button>
                                 </div>
                             </div>
                             <div>
