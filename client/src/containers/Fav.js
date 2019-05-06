@@ -48,7 +48,7 @@ class Fav extends Component {
 
     render() {
         return (
-            <div className="container col-sm-12 col-md-10 col-lg-8">
+            <div className="container col-sm-12 col-md-10 col-lg-8 gray-bg">
                 <h3>Favorite contents saved here!</h3>
                 <ul className="list-group search-results">
                     {this.state.podcasts.map((result, i) => (

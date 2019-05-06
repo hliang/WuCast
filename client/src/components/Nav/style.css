@@ -1,0 +1,7 @@
+.navbar {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+.nav-item.active {
+  background-color: hsl(0, 0%, 90%);
+}

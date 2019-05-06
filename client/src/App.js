@@ -5,6 +5,7 @@ import Fav from "./containers/Fav";
 // import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import "./App.css";
 
 class App extends Component {
   render() {
